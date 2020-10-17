@@ -167,27 +167,27 @@ void init(ffi.DynamicLibrary library){
       w.write('ffi.DynamicLibrary _open(){\n\t');
       if (dynamicLibraryConfig.windows != null) {
         w.write(
-            'if(io.Platform.isWindows) return ffi.${dynamicLibraryConfig.windows};\n\t');
+            'if(io.Platform.isWindows) { return ffi.${dynamicLibraryConfig.windows}; }\n\t');
       }
       if (dynamicLibraryConfig.linux != null) {
         w.write(
-            'if(io.Platform.isLinux) return ffi.${dynamicLibraryConfig.linux};\n\t');
+            'if(io.Platform.isLinux) { return ffi.${dynamicLibraryConfig.linux}; }\n\t');
       }
       if (dynamicLibraryConfig.android != null) {
         w.write(
-            'if(io.Platform.isAndroid) return ffi.${dynamicLibraryConfig.android};\n\t');
+            'if(io.Platform.isAndroid) { return ffi.${dynamicLibraryConfig.android}; }\n\t');
       }
       if (dynamicLibraryConfig.macOS != null) {
         w.write(
-            'if(io.Platform.isMacOS) return ffi.${dynamicLibraryConfig.macOS};\n\t');
+            'if(io.Platform.isMacOS) { return ffi.${dynamicLibraryConfig.macOS}; }\n\t');
       }
       if (dynamicLibraryConfig.iOS != null) {
         w.write(
-            'if(io.Platform.isIOS) return ffi.${dynamicLibraryConfig.iOS};\n\t');
+            'if(io.Platform.isIOS) { return ffi.${dynamicLibraryConfig.iOS}; }\n\t');
       }
       if (dynamicLibraryConfig.fuchsia != null) {
         w.write(
-            'if(io.Platform.isFuchsia) return ffi.${dynamicLibraryConfig.fuchsia};\n\t');
+            'if(io.Platform.isFuchsia) { return ffi.${dynamicLibraryConfig.fuchsia}; }\n\t');
       }
       var other = dynamicLibraryConfig.other == null
           ? 'throw UnsupportedError(\'This platform is not supported.\');\n'

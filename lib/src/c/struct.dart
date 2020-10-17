@@ -97,7 +97,7 @@ class Struct extends Element {
     for (var field in fields) {
       // Some types (Int32, Float32, etc.) need to be annotated
       final annotationName = w.getPropertyAnnotationType(field.type);
-      if (annotationName != null) {
+      if (annotationName != null && annotationName != 'ffi.Pointer') {
         w.write('  @$annotationName()\n');
       }
       w.write('  ${w.getDartType(field.type)} ${field.name};\n');
@@ -116,6 +116,15 @@ class Struct extends Element {
       w.write('    return ffi.allocate<$name>();\n');
     }
     w.write('  }\n');
+
+    //
+    // Write toString()
+    //
+    w.write('  String toString() => \'\$runtimeType\\n');
+    for (var field in fields) {
+      w.write('  ${field.name}: \$${field.name}\\n');
+    }
+    w.write('\';\n');
     w.write('  \n');
 
     //
